@@ -24,4 +24,4 @@ Configure Bolt to [work with PE Orchestrator](https://puppet.com/docs/bolt/0.x/b
 
 ## Reference
 
-Provides three tasks to facilitate Bolt actions: `bolt_shim::command`, `bolt_shim::file_upload`, and `bolt_shim::script`. These are not meant to be run directly.
+Provides three tasks to facilitate Bolt actions: `bolt_shim::command`, `bolt_shim::upload`, and `bolt_shim::script`. These are not meant to be run directly.
