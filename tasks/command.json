@@ -1,4 +1,10 @@
 {
   "description": "This task serves as a bridge between Bolt and Orchestrator and is not intended to be run directly",
-  "input_method": "stdin"
+  "input_method": "stdin",
+  "parameters": {
+    "command": {
+      "type": "String",
+      "description": "The command to be executed"
+    }
+  }
 }
