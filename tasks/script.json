@@ -1,4 +1,15 @@
 {
   "description": "This task serves as a bridge between Bolt and Orchestrator and is not intended to be run directly",
-  "input_method": "stdin"
+  "input_method": "stdin",
+  "parameters": {
+    "content": {
+      "type": "String",
+      "description": "The script content to be executed",
+      "sensitive": true
+    },
+    "arguments": {
+      "type": "Array[String]",
+      "description": "Arguments to pass to the script"
+    }
+  }
 }
