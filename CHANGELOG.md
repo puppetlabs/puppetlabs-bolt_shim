@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## Release 0.2.1
+
+**Bugfixes**
+
+Mark file content as sensitive to prevent it being logged or stored in a database to improve the overall Bolt experience.
+
 ## Release 0.2.0
 
 **Feature**
