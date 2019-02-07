@@ -10,16 +10,12 @@ require 'fileutils'
 
 module WinHelpers
   class << self
-    PS_ARGS = %w[
-      -NoProfile -NonInteractive -NoLogo -ExecutionPolicy Bypass
-    ].freeze
-
     def windows?
       !!File::ALT_SEPARATOR
     end
 
-    def powershell_script?(extension)
-      extension.casecmp('.ps1').zero?
+    def powershell_script?(path)
+      Pathname(path).extname.casecmp('.ps1').zero?
     end
 
     def run_script(arguments, script_path)
@@ -43,42 +39,6 @@ module WinHelpers
       exit 1
     }
     PS
-    end
-
-    def process_from_extension(path)
-      case Pathname(path).extname.downcase
-      when '.rb'
-        [
-          'ruby.exe',
-          ['-S', "\"#{path}\""],
-        ]
-      when '.ps1'
-        [
-          'powershell.exe',
-          [*PS_ARGS, '-File', "\"#{path}\""],
-        ]
-      when '.pp'
-        [
-          'puppet.bat',
-          ['apply', "\"#{path}\""],
-        ]
-      else
-        # Run the script via cmd, letting Windows extension handling determine how
-        [
-          'cmd.exe',
-          ['/c', "\"#{path}\""],
-        ]
-      end
-    end
-
-    def escape_arguments(arguments)
-      arguments.map do |arg|
-        if arg =~ %r{ }
-          "\"#{arg}\""
-        else
-          arg
-        end
-      end
     end
   end
 end
@@ -121,13 +81,8 @@ def script(content, arguments, script_name)
   with_tmpscript(content, script_name) do |file, dir|
     if WinHelpers.windows?
       return error('Error: Incompatible Bolt version. Update to puppet-bolt version => 1.11.0') if legacy_bolt
-      if WinHelpers.powershell_script?(file)
-        command(['powershell.exe'] + [WinHelpers.run_script(arguments, file)], nil, dir: dir)
-      else
-        path, args = *WinHelpers.process_from_extension(file)
-        args += WinHelpers.escape_arguments(arguments)
-        command(args.unshift(path).join(' '), nil, dir: dir)
-      end
+      return error('Error: Only powershell scripts are supported on windows targets.') unless WinHelpers.powershell_script?(file)
+      command(['powershell.exe'] + [WinHelpers.run_script(arguments, file)], nil, dir: dir)
     else
       command(file, arguments, dir: dir)
     end
