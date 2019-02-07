@@ -10,6 +10,10 @@
     "arguments": {
       "type": "Array[String]",
       "description": "Arguments to pass to the script"
+    },
+    "name": {
+      "type": "Optional[String]",
+      "description": "The name of the script file including extension"
     }
   }
 }

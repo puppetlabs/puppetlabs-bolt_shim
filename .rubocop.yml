@@ -105,3 +105,7 @@ Style/IfUnlessModifier:
   Enabled: false
 Style/SymbolProc:
   Enabled: false
+Style/DoubleNegation:
+  Enabled: false
+Style/Documentation:
+  Enabled: false
