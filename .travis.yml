@@ -1,17 +1,11 @@
 ---
-sudo: false
-dist: trusty
+sudo: required
 language: ruby
 cache: bundler
 before_install:
-  - bundle -v
-  - rm -f Gemfile.lock
-  - gem update --system
-  - gem --version
-  - bundle -v
+  - bundle config set without 'system_tests'
 script:
   - 'bundle exec rake $CHECK'
-bundler_args: --without system_tests
 rvm:
   - 2.5.1
 env:
@@ -20,10 +14,8 @@ env:
 matrix:
   fast_finish: true
   include:
-    -
-      env: CHECK="syntax lint metadata_lint check:symlinks check:git_ignore check:dot_underscore check:test_file rubocop"
-    -
-      env: CHECK=parallel_spec
+    - env: CHECK="syntax lint metadata_lint check:symlinks check:git_ignore check:dot_underscore check:test_file rubocop"
+    - env: CHECK=parallel_spec
 branches:
   only:
     - master
