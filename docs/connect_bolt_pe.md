@@ -123,7 +123,7 @@ config:
   transport: pcp
   pcp:
     cacert: "certs/cert.pem"
-    service-url: "https://master.example.com"
+    service-url: "https://master.example.com:8150"
     token-file: "tokens/token"
 ```
 
