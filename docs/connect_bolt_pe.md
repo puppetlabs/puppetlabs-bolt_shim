@@ -123,7 +123,7 @@ config:
   transport: pcp
   pcp:
     cacert: "certs/cert.pem"
-    service-url: "https://master.example.com:8143"
+    service-url: "https://primary.example.com:8143"
     token-file: "tokens/token"
 ```
 
@@ -150,7 +150,7 @@ puppetdb:
 ## Running tasks
 
 In order to run tasks on nodes connected to your PE instance, each task must be
-installed on the PE master. To view tasks or plans installed on the PE master's
+installed on the PE primary. To view tasks or plans installed on the PE primary's
 production environment, run `puppet task show` or `puppet plan show`
 respectively. To specify an environment other than production, use the
 `--environment` flag. For example, `puppet task show --environment test`.
