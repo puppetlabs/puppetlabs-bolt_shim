@@ -20,7 +20,7 @@ Install the Bolt shim. Using PE RBAC, grant the ability to run all tasks to thos
 
 ## Usage
 
-Configure Bolt to [work with PE Orchestrator](https://github.com/puppetlabs/puppetlabs-bolt_shim/blob/master/docs/connect_bolt_pe.md) and run Bolt commands.
+Configure Bolt to [work with PE Orchestrator](https://github.com/puppetlabs/puppetlabs-bolt_shim/blob/main/docs/connect_bolt_pe.md) and run Bolt commands.
 
 ## Reference
 
