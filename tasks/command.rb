@@ -16,3 +16,4 @@ params = JSON.parse(STDIN.read)
 result = command(params['command'])
 
 puts result.to_json
+exit p.exitstatus
