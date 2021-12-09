@@ -155,3 +155,7 @@ production environment, run `puppet task show` or `puppet plan show`
 respectively. To specify an environment other than production, use the
 `--environment` flag. For example, `puppet task show --environment test`.
 
+## Limitations
+
+Some PCP functionality, such as running scripts, does not work if your
+`/tmp` directory is mounted with `noexec`.
