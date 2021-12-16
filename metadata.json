@@ -1,6 +1,6 @@
 {
   "name": "puppetlabs-bolt_shim",
-  "version": "0.3.2",
+  "version": "0.4.0",
   "author": "puppetlabs",
   "summary": "Bolt adapter for PE Orchestrator",
   "license": "Apache-2.0",
