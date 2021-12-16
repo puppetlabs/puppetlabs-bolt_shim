@@ -43,15 +43,8 @@ module WinHelpers
   end
 end
 
-def in_tmpdir
-  dir = Dir.mktmpdir
-  yield dir
-ensure
-  FileUtils.remove_entry dir if dir
-end
-
 def with_tmpscript(content, script_name)
-  in_tmpdir do |dir|
+  Dir.mktmpdir(nil, File.expand_path(__dir__)) do |dir|
     dest = File.join(dir, script_name)
     File.write(dest, Base64.decode64(content))
     File.chmod(0o750, dest)
