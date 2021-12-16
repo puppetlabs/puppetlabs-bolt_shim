@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file.
 
+## Release 0.4.0
+
+**Feature**
+
+Create tmpdir relative to the directory that tasks are uploaded to. This allows users who have the
+system tmpdir mounted with noexec to use the `run_script` shim task.
+
 ## Release 0.3.1
 
 **Bugfixes**
