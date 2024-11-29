@@ -8,6 +8,7 @@ require 'tempfile'
 require 'pathname'
 require 'fileutils'
 
+# @module WinHelpers
 module WinHelpers
   class << self
     def windows?
